@@ -24,7 +24,7 @@ import { useProductsStore } from '@/stores/products.store'
 const productsStore = useProductsStore()
 
 onMounted(() => {
-  //AQUÍ PODEMOS HACER LLAMADOS A LAS APIS Y CARGARLAS EN EL DOM CUANDO SEA NECESARIO
+  productsStore.fetchProducts()
 })
 </script>
 
