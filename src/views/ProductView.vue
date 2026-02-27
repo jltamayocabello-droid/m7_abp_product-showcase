@@ -23,8 +23,8 @@ import { useProductsStore } from '@/stores/products.store'
 
 const productsStore = useProductsStore()
 
-onMounted(() => {
-  productsStore.fetchProducts()
+onMounted(async() => {
+  await productsStore.fetchProducts();
 })
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeaderComp>Administrar productos</HeaderComp>
+    <HeaderComp>CRUD de productos</HeaderComp>
   </div>
 
   <main class="container">
@@ -39,7 +39,15 @@ import { useProductsStore } from '@/stores/products.store'
 
 const productsStore = useProductsStore()
 
-onMounted(() => {
-  productsStore.fetchProducts()
+onMounted(async () => {
+  await productsStore.fetchProducts()
 })
 </script>
+
+<style lang="css" scoped>
+tr,
+th,
+td {
+ align-content: center;
+}
+</style>
