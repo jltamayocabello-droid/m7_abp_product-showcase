@@ -35,20 +35,32 @@ export const useProductsStore = defineStore('products', () => {
   async function addProduct(name, image, price, category, description) {
     try {
       let data = { name, image, price, category, description }
-    const docRef = await addDoc(collection(db, 'products'), data);
+      const docRef = await addDoc(collection(db, 'products'), data)
 
-    products.value.push({id: docRef.id, name, image, price, category, description})
+      products.value.push({ id: docRef.id, name, image, price, category, description })
 
+      return { success: 'Producto creado con éxito.' }
+    } catch (error) {
+      console.log(error)
+      return { error: 'Error al intentar agregar el producto.' }
+    }
+  }
 
+  async function deleteProduct(id, name) {
+    try {
+      await deleteDoc(doc(db, 'products', id))
 
-    return { success: 'Producto creado con éxito.'}
-    } catch (error){
+      let indexProduct = products.value.findIndex((p) => p.id == id)
+      products.value.splice(indexProduct, 1)
 
-      console.log(error);
-      return { error: 'Error al intentar agregar el producto.'}
+      return { success: `Producto '${name}', eliminado correctamente.` }
+    } catch (error) {
+      console.log(error)
+
+      return { error: `Error al intentar eliminar el producto ${name}.` }
     }
   }
 
   //EXPORTACIÓN DE LO QUE QUEREMOS DEJAR PÚBLICO
-  return { categories, products, quantityProducts, fetchProducts, addProduct }
+  return { categories, products, quantityProducts, fetchProducts, addProduct, deleteProduct }
 })

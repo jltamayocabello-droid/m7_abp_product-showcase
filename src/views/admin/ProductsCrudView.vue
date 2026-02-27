@@ -51,6 +51,7 @@
               <th scope="col">Imagen</th>
               <th scope="col">Precio</th>
               <th scope="col">Categoría</th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -62,6 +63,12 @@
               </td>
               <td>{{ product.price }}</td>
               <td>{{ product.category }}</td>
+              <td>
+                <button class="btn btn-warning me-2">Editar</button>
+                <button class="btn btn-danger" @click="deleteProduct(product.id, product.name)">
+                  Eliminar
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -119,6 +126,18 @@ const addProduct = async () => {
   if (respuesta.success) {
     alert(respuesta.success)
     resetForm()
+  } else {
+    alert(respuesta.error)
+  }
+}
+
+
+
+const deleteProduct = async (id, name) => {
+  let respuesta = await productsStore.deleteProduct(id, name)
+
+  if (respuesta.success) {
+    alert(respuesta.success)
   } else {
     alert(respuesta.error)
   }
