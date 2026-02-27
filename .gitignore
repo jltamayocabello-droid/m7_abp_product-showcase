@@ -40,4 +40,4 @@ __screenshots__/
 
 #No  subir firebaseConfig.js
 
-/src/firebaseConfig.js
+src/firebaseConfig.js
