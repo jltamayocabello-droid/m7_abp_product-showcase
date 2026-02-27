@@ -21,6 +21,11 @@ export const useProductsStore = defineStore('products', () => {
 
   //MÉTODOS -> ACTIONS
 
+  function findProduct(id) {
+    return products.value.find((p) => p.id == id)
+  }
+
+  //MÉTODOS CRUD FIRESTORE
   async function fetchProducts() {
     try {
       const snap = await getDocs(collection(db, 'products'))
@@ -37,11 +42,12 @@ export const useProductsStore = defineStore('products', () => {
       let data = { name, image, price, category, description }
       const docRef = await addDoc(collection(db, 'products'), data)
 
-      products.value.push({ id: docRef.id, name, image, price, category, description })
+      products.value.push({ id: docRef.id, ...data })
 
       return { success: 'Producto creado con éxito.' }
     } catch (error) {
       console.log(error)
+
       return { error: 'Error al intentar agregar el producto.' }
     }
   }
@@ -61,6 +67,34 @@ export const useProductsStore = defineStore('products', () => {
     }
   }
 
+  async function editProduct(name, image, price, category, description, id) {
+    try {
+
+			let data = { name, image, price, category, description };
+
+			await updateDoc(doc(db, 'products', id), data);
+
+			let indexProduct = products.value.findIndex(p => p.id == id);
+
+			products.value[indexProduct] = {...data, id};
+
+      return { success: 'Producto editado con éxito.' }
+    } catch (error) {
+      console.log(error)
+
+      return { error: 'Error al intentar editar el producto.' }
+    }
+  }
+
   //EXPORTACIÓN DE LO QUE QUEREMOS DEJAR PÚBLICO
-  return { categories, products, quantityProducts, fetchProducts, addProduct, deleteProduct }
+  return {
+    categories,
+    products,
+    quantityProducts,
+    fetchProducts,
+    addProduct,
+    deleteProduct,
+    findProduct,
+    editProduct,
+  }
 })

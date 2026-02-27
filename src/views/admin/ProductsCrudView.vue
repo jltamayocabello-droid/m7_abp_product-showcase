@@ -5,7 +5,10 @@
     <main class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-sm-7 col-md-6 col-lg-5">
-          <form @submit.prevent="addProduct">
+          <form @submit.prevent="createOrEdit">
+            <div>
+              <input type="hidden" class="form-control" v-model="idProduct" />
+            </div>
             <div class="mb-3">
               <label class="form-label">Nombre: </label>
               <input type="text" class="form-control" required v-model="name" />
@@ -36,7 +39,31 @@
               </select>
             </div>
             <div>
-              <button class="btn btn-primary" type="submit" :disabled="!validForm">Crear</button>
+              <button
+                class="btn btn-primary"
+                type="submit"
+                :disabled="!validForm"
+                v-if="!editState"
+              >
+                Crear
+              </button>
+              <button
+                class="btn btn-warning me-2"
+                type="submit"
+                :disabled="!validForm"
+                v-if="editState"
+              >
+                Editar
+              </button>
+              <button
+                class="btn btn-secondary"
+                type="submit"
+                :disabled="!validForm"
+                v-if="editState"
+                @click="cancelEdit"
+              >
+                Cancelar edición
+              </button>
             </div>
           </form>
         </div>
@@ -64,7 +91,9 @@
               <td>{{ product.price }}</td>
               <td>{{ product.category }}</td>
               <td>
-                <button class="btn btn-warning me-2">Editar</button>
+                <button class="btn btn-warning me-2" @click="preEditProduct(product.id)">
+                  Editar
+                </button>
                 <button class="btn btn-danger" @click="deleteProduct(product.id, product.name)">
                   Eliminar
                 </button>
@@ -91,6 +120,10 @@ const image = ref('https://placehold.co/300x200.png')
 const price = ref(1)
 const category = ref('')
 const description = ref('')
+const idProduct = ref('')
+
+//ESTADO DE EDICIÓN
+const editState = ref(false)
 
 //COMPUTED
 const validForm = computed(() => {
@@ -112,6 +145,7 @@ const resetForm = () => {
   price.value = 1
   category.value = ''
   description.value = ''
+  idProduct.value = ''
 }
 
 const addProduct = async () => {
@@ -131,9 +165,37 @@ const addProduct = async () => {
   }
 }
 
+const editProduct = async () => {
+  let respuesta = await productsStore.editProduct(
+    name.value,
+    image.value,
+    price.value,
+    category.value,
+    description.value,
+    idProduct.value,
+  )
 
+  if (respuesta.success) {
+    alert(respuesta.success)
+    resetForm()
+  } else {
+    alert(respuesta.error)
+  }
+}
+
+const createOrEdit = () => {
+  if (editState.value) {
+    editProduct()
+  } else {
+    addProduct()
+  }
+}
 
 const deleteProduct = async (id, name) => {
+  if (!confirm('Está seguro que desea elminar el producto: ' + name)) {
+    return
+  }
+
   let respuesta = await productsStore.deleteProduct(id, name)
 
   if (respuesta.success) {
@@ -141,6 +203,25 @@ const deleteProduct = async (id, name) => {
   } else {
     alert(respuesta.error)
   }
+}
+
+const preEditProduct = async (id) => {
+  const product = productsStore.findProduct(id)
+
+  name.value = product.name
+  image.value = product.image
+  price.value = product.price
+  category.value = product.category
+  description.value = product.description
+  idProduct.value = product.id
+
+  console.log(idProduct.value)
+  editState.value = true
+}
+
+const cancelEdit = () => {
+  editState.value = false
+  resetForm()
 }
 
 onMounted(async () => {
