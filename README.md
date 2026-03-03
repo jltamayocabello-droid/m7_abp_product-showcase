@@ -53,6 +53,7 @@ Este proyecto cumple con los estándares exigidos para el módulo 7:
 - **Vue Router 4**: Gestión de navegación SPA.
 - **Pinia**: Manejo moderno del estado global (Products, Cart, User).
 - **Bootstrap 5.3 + Custom CSS**: Responsividad, componentes UI y estética _Glassmorphism_.
+- **Vuetify**: Componentes interactivos como alertas contextuales (Snackbars) y botones.
 - **Vue3-Carousel**: Implementación de sliders para productos destacados.
 
 ### 2. Estructura del Proyecto
@@ -90,6 +91,9 @@ m7_abp_vue-product-showcase/
 │   │   ├── products.store.js      # Catálogo, categorías y CRUD de productos
 │   │   ├── cart.store.js          # Lógica de compras y cálculos matemáticos
 │   │   └── user.store.js          # Guardado de credenciales y roles
+│   │
+│   ├── testing/
+│   │   └── test_search.js         # Script E2E auxiliar para probar flujo de búsqueda
 │   │
 │   └── router/
 │       └── index.js               # Rutas con lazy loading
@@ -168,13 +172,14 @@ npm run dev
 
 ## 📱 Funcionalidades Destacadas
 
-| Funcionalidad           | Descripción                                              |
-| ----------------------- | -------------------------------------------------------- |
-| 🛍️ **E-Commerce Real**  | Lógica de Carrito de Compras enlazada al stock global.   |
-| 🎨 **Modo Noche**       | Switch interactivo de variables globales y colores Neón. |
-| 🧱 **Arquitectura SPA** | Transiciones fluidas sin recarga de página (Vue Router). |
-| 🛡️ **Control de Roles** | Ocultamiento reactivo de Vistas Administrativas.         |
-| 🚀 **Gestión CRUD**     | Tabla inteligente con inserción de productos en vivo.    |
+| Funcionalidad               | Descripción                                                                                                                                                          |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🛍️ **E-Commerce Real**      | Lógica de Carrito de Compras enlazada al stock global.                                                                                                               |
+| 🎨 **Modo Noche**           | Switch interactivo de variables globales y colores Neón.                                                                                                             |
+| 🧱 **Arquitectura SPA**     | Transiciones fluidas sin recarga de página (Vue Router).                                                                                                             |
+| 🛡️ **Control de Roles**     | Ocultamiento reactivo de Vistas Administrativas.                                                                                                                     |
+| 🚀 **Gestión CRUD**         | Tabla inteligente con inserción de productos en vivo, con notificaciones interactivas de Vuetify.                                                                    |
+| 🎯 **Buscador Inteligente** | Navbar `sticky` que no te expulsa del panel de control si buscas estando de admin, y que hace auto-scroll a las grillas al usarse desde otra parte de la aplicación. |
 
 ---
 
