@@ -1,28 +1,47 @@
 <template>
-<div>
+  <div>
+    <HeaderComp>Página Home</HeaderComp>
 
-<HeaderComp>Página Home</HeaderComp>
-
-<div class="card-quantity-products">
+    <!--<div class="card-quantity-products">
       <p class="card-quantity-products__value">{{ productsStore.quantityProducts }}</p>
       <p class="card-quantity-products__text">Cantidad productos</p>
-    </div>
+    </div>-->
 
-</div>
+    <main class="container">
+      <section id="cocina">
+        <h2>Productos de cocina</h2>
+        <ListProducts :products="productsStore.filterProductsByCategory('Cocina')" />
+      </section>
+
+      <v-divider :thickness="4" class="border-opacity-25" color="info"></v-divider>
+
+      <section id="hogar">
+        <h2>Productos de Hogar</h2>
+        <ListProducts :products="productsStore.filterProductsByCategory('hogar')" />
+      </section>
+
+      <v-divider :thickness="4" class="border-opacity-25" color="info"></v-divider>
+
+      <section id="jardin">
+        <h2>Productos de Jardin</h2>
+        <ListProducts :products="productsStore.filterProductsByCategory('jardin')" />
+      </section>
+
+    </main>
+  </div>
 </template>
 
 <script setup>
-import HeaderComp from '@/components/layouts/HeaderComp.vue';import { useProductsStore } from '../stores/products.store';
-import { onMounted } from 'vue';
+import HeaderComp from '@/components/layouts/HeaderComp.vue'
+import ListProducts from '@/components/ListProduct.vue'
+import { useProductsStore } from '../stores/products.store'
+import { onMounted } from 'vue'
 
 const productsStore = useProductsStore()
 
 onMounted(async () => {
-  await productsStore.fetchProducts();
-});
-
-
-
+  await productsStore.fetchProducts()
+})
 </script>
 
 <style lang="css" scoped>
@@ -33,7 +52,7 @@ onMounted(async () => {
   align-items: center;
   flex-direction: column;
   border: 2px solid black;
-  padding:1rem;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -46,5 +65,4 @@ onMounted(async () => {
   font-size: 3rem;
   font-weight: 300;
 }
-
 </style>
