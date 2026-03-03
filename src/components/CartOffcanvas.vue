@@ -59,7 +59,7 @@
             class="btn btn-sm btn-outline-danger ms-2"
             @click="cartStore.removeFromCart(item.product.id)"
           >
-            Volcar
+            Quitar
           </button>
         </div>
       </div>
@@ -73,7 +73,7 @@
           <button class="btn btn-outline-secondary w-50" @click="cartStore.clearCart()">
             Vaciar Carrito
           </button>
-          <button class="btn btn-success w-50">Comprar now</button>
+          <button class="btn btn-success w-50">Ir a pagar</button>
         </div>
       </div>
     </div>
