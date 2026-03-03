@@ -287,12 +287,14 @@
 <script setup>
 document.title = 'CRUD Products'
 import HeaderComp from '@/components/layouts/HeaderComp.vue'
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref, computed, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import Swal from 'sweetalert2'
 
 import { useProductsStore } from '@/stores/products.store'
 
 const productsStore = useProductsStore()
+const route = useRoute()
 
 const name = ref('')
 const image = ref('https://placehold.co/300x200.png')
@@ -308,12 +310,19 @@ const editState = ref(false)
 const loading = ref(false)
 
 //FILTRADO
-const filterName = ref('')
+const filterName = ref(route.query.search || '')
 const filteredProducts = computed(() => {
   if (!filterName.value) return productsStore.products
   const search = filterName.value.toLowerCase()
   return productsStore.products.filter((p) => p.name.toLowerCase().includes(search))
 })
+
+watch(
+  () => route.query.search,
+  (newSearch) => {
+    filterName.value = newSearch || ''
+  },
+)
 
 //SNACKBAR DE VUETIFY
 const snackbar = ref(false)

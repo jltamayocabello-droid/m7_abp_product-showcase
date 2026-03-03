@@ -164,7 +164,7 @@ const cartStore = useCartStore()
 const route = useRoute()
 
 const filterCategory = ref('')
-const filterName = ref('')
+const filterName = ref(route.query.search || '') // Iniciar con query en caso de existir
 
 const formatPrice = (value) => {
   return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(value)
@@ -261,10 +261,17 @@ const breakpoints = {
 onMounted(async () => {
   await productsStore.fetchProducts()
 
+  // Si llegamos con un un término de búsqueda desde otra vista
+  if (route.query.search) {
+    filterName.value = route.query.search
+    setTimeout(() => {
+      scrollToCategory('categoryTop')
+    }, 100)
+  }
+
   // Si llegamos con un hash desde otra vista (como Home o Footer)
   if (route.hash) {
     nextTick(() => {
-      // route.hash trae el formato '#category-X', extraemos 'X'
       const categoryName = route.hash.replace('#category-', '')
       setTimeout(() => {
         scrollToCategory(categoryName)
@@ -273,14 +280,25 @@ onMounted(async () => {
   }
 })
 
-// Por si cambia de hash estando ya dentro de ProductView (ej. usando el Footer)
+// Por si cambia de hash o de query estando ya dentro de ProductView (ej. usando el Footer o el buscador del Navbar)
 watch(
   () => route.hash,
   (newHash) => {
     if (newHash && newHash.startsWith('#category-')) {
       const categoryName = newHash.replace('#category-', '')
-      // Decodificamos la URI por si hay espacios (ej. '#category-Teclados%20Gamer')
       scrollToCategory(decodeURIComponent(categoryName))
+    }
+  },
+)
+
+watch(
+  () => route.query.search,
+  (newSearch) => {
+    filterName.value = newSearch || ''
+    if (newSearch) {
+      setTimeout(() => {
+        scrollToCategory('categoryTop')
+      }, 100)
     }
   },
 )

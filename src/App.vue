@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm z-3">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="#">
         <svg
@@ -36,8 +36,10 @@
           class="d-flex ms-lg-4 my-2 my-lg-0"
           role="search"
           style="max-width: 300px; width: 100%"
+          @submit.prevent="onGlobalSearch"
         >
           <input
+            v-model="globalSearchQuery"
             class="form-control me-2"
             type="search"
             placeholder="Buscar productos..."
@@ -124,8 +126,8 @@
 </template>
 
 <script setup>
-import { RouterLink, RouterView, useRouter } from 'vue-router'
-import { computed, onMounted, ref } from 'vue'
+import { RouterLink, RouterView, useRouter, useRoute } from 'vue-router'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useUserStore } from './stores/user.store'
 import { useCartStore } from './stores/cart.store'
 import { logout } from './services/auth'
@@ -136,8 +138,32 @@ import FooterComp from './components/layouts/FooterComp.vue'
 import { seedDatabase } from './scripts/seedProducts'
 
 const router = useRouter()
+const route = useRoute()
 const userStore = useUserStore()
 const cartStore = useCartStore()
+
+// Global Search Logic
+const globalSearchQuery = ref(route.query.search || '')
+
+const onGlobalSearch = () => {
+  const queryObj =
+    globalSearchQuery.value.trim() !== '' ? { search: globalSearchQuery.value.trim() } : {}
+  // Si estamos en la vista del catálogo o en el CRUD, quedarse en esa vista y רק filtrar
+  if (route.path === '/products' || route.path === '/admin/products') {
+    router.push({ path: route.path, query: queryObj })
+  } else {
+    // Si estamos en otra vista (Home), navegar a products con el filtro
+    router.push({ path: '/products', query: queryObj })
+  }
+}
+
+// Mantener la barra de búsqueda sincronizada si cambia el URL externamente
+watch(
+  () => route.query.search,
+  (newSearch) => {
+    globalSearchQuery.value = newSearch || ''
+  },
+)
 
 // Theme Logic
 const isDarkMode = ref(false)
