@@ -39,14 +39,18 @@
               </select>
             </div>
             <div>
-              <button
-                class="btn btn-primary"
+              
+              <v-btn
+                variant="outlined"
+                color="primary"
                 type="submit"
                 :disabled="!validForm"
                 v-if="!editState"
+                :loading
               >
                 Crear
-              </button>
+              </v-btn>
+
               <button
                 class="btn btn-warning me-2"
                 type="submit"
@@ -124,6 +128,7 @@ const idProduct = ref('')
 
 //ESTADO DE EDICIÓN
 const editState = ref(false)
+const loading = ref(false)
 
 //COMPUTED
 const validForm = computed(() => {
@@ -149,13 +154,18 @@ const resetForm = () => {
 }
 
 const addProduct = async () => {
+
+   loading.value = true;
+
   let respuesta = await productsStore.addProduct(
     name.value,
     image.value,
     price.value,
     category.value,
     description.value,
-  )
+  );
+
+  loading.value = false;
 
   if (respuesta.success) {
     alert(respuesta.success)
