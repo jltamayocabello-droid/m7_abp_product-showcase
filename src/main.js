@@ -13,7 +13,6 @@ import '@fontsource/roboto/500-italic.css'
 import '@fontsource/roboto/700-italic.css'
 import '@fontsource/roboto/900-italic.css'
 
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -23,10 +22,10 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-
-
 import App from './App.vue'
 import router from './router'
+
+import './assets/main.css'
 
 import { auth } from './firebaseConfig'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -53,4 +52,3 @@ onAuthStateChanged(auth, async (firebaseUser) => {
     mounted = true
   }
 })
-

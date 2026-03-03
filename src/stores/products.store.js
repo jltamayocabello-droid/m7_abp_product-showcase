@@ -12,12 +12,24 @@ export const useProductsStore = defineStore('products', () => {
     { id: 1, name: 'Hogar' },
     { id: 2, name: 'Cocina' },
     { id: 3, name: 'Jardín' },
+    { id: 4, name: 'Electrónica' },
+    { id: 5, name: 'Ropa' },
+  ])
+
+  const subcategories = ref([
+    { id: 1, name: 'precio normal' },
+    { id: 2, name: 'oferta' },
+    { id: 3, name: 'agotado' },
   ])
 
   const products = ref([])
 
   //GETTERS -> PROPIEDADES COMPUTADAS
   const quantityProducts = computed(() => products.value.length)
+
+  const totalStock = computed(() => {
+    return products.value.reduce((acc, product) => acc + (product.stock || 0), 0)
+  })
 
   //MÉTODOS -> ACTIONS
 
@@ -37,9 +49,9 @@ export const useProductsStore = defineStore('products', () => {
     }
   }
 
-  async function addProduct(name, image, price, category, description) {
+  async function addProduct(name, image, price, category, subcategory, stock, description) {
     try {
-      let data = { name, image, price, category, description }
+      let data = { name, image, price, category, subcategory, stock, description }
       const docRef = await addDoc(collection(db, 'products'), data)
 
       products.value.push({ id: docRef.id, ...data })
@@ -67,9 +79,9 @@ export const useProductsStore = defineStore('products', () => {
     }
   }
 
-  async function editProduct(name, image, price, category, description, id) {
+  async function editProduct(name, image, price, category, subcategory, stock, description, id) {
     try {
-      let data = { name, image, price, category, description }
+      let data = { name, image, price, category, subcategory, stock, description }
 
       await updateDoc(doc(db, 'products', id), data)
 
@@ -87,16 +99,18 @@ export const useProductsStore = defineStore('products', () => {
 
   function filterProductsByCategory(category) {
     return products.value.filter(
-      (product) => product.category.toLowerCase() == category.toLowerCase()
+      (product) => product.category.toLowerCase() == category.toLowerCase(),
     )
-  };
+  }
 
   //EXPORTACIÓN DE LO QUE QUEREMOS DEJAR PÚBLICO
   return {
     categories,
+    subcategories,
     products,
     quantityProducts,
     filterProductsByCategory,
+    totalStock,
     fetchProducts,
     addProduct,
     deleteProduct,
