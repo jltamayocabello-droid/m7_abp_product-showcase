@@ -3,6 +3,42 @@
     <HeaderComp>Inicio</HeaderComp>
 
     <main class="container py-5">
+      <!-- Hero Banner -->
+      <section class="mb-5">
+        <div
+          class="p-5 text-center bg-image rounded-4 shadow-sm"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=2070&auto=format&fit=crop');
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+          "
+        >
+          <div
+            class="mask rounded-4 d-flex justify-content-center align-items-center h-100"
+            style="
+              background-color: rgba(0, 0, 0, 0.5);
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+            "
+          >
+            <div class="text-white px-3">
+              <h1 class="mb-3 fw-bold display-4">Explora Nuestro Catálogo Premium</h1>
+              <h4 class="mb-3">Las mejores marcas y ofertas en un solo lugar</h4>
+              <RouterLink
+                class="btn btn-success btn-lg mt-2 fw-semibold"
+                to="/products"
+                role="button"
+                >Ver Catálogo</RouterLink
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Section: Ofertas Destacadas -->
       <section>
         <div class="d-flex justify-content-between align-items-end mb-4">
@@ -35,6 +71,30 @@
           <p class="text-muted mb-0">Aún no hay ofertas disponibles. ¡Revisa más tarde!</p>
         </div>
       </section>
+
+      <!-- Section: Shop by Categories -->
+      <section class="mt-5 pt-4">
+        <div class="mb-4">
+          <h3 class="mb-1 fw-bold">Comprar por Categorías</h3>
+          <p class="text-muted mb-0">
+            Explora la gran variedad de nuestro catálogo por departamentos.
+          </p>
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
+          <div class="col" v-for="category in mappedCategories" :key="category.id">
+            <RouterLink to="/products" class="text-decoration-none">
+              <div
+                class="card category-card h-100 border-0 shadow-sm text-center py-4 rounded-4 bg-light"
+              >
+                <div class="card-body">
+                  <i :class="['bi', category.icon, 'text-success']" style="font-size: 3rem"></i>
+                  <h5 class="card-title mt-3 text-dark fw-semibold">{{ category.name }}</h5>
+                </div>
+              </div>
+            </RouterLink>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 </template>
@@ -54,6 +114,20 @@ const ofertas = computed(() => {
   return productsStore.products.filter((p) => p.subcategory === 'oferta')
 })
 
+const mappedCategories = computed(() => {
+  const iconMap = {
+    Hogar: 'bi-house-door',
+    Cocina: 'bi-cup-hot',
+    Jardín: 'bi-tree',
+    Electrónica: 'bi-laptop',
+    Ropa: 'bi-bag',
+  }
+  return productsStore.categories.map((cat) => ({
+    ...cat,
+    icon: iconMap[cat.name] || 'bi-tag',
+  }))
+})
+
 const breakpoints = {
   0: { itemsToShow: 1, snapAlign: 'center' },
   576: { itemsToShow: 2, snapAlign: 'start' },
@@ -67,6 +141,18 @@ onMounted(async () => {
 </script>
 
 <style lang="css" scoped>
+.category-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #198754 !important;
+}
+
 /* Carousel Custom Styles */
 :deep(.carousel__prev),
 :deep(.carousel__next) {
