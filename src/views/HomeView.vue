@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeaderComp>Bienvenido/a disfruta de nuestras ofertas</HeaderComp>
+    <HeaderComp><em>Bienvenid@, disfrute de nuestras ofertas</em></HeaderComp>
 
     <main class="container py-5">
       <!-- Hero Banner -->
@@ -74,11 +74,13 @@
 
       <!-- Section: Shop by Categories -->
       <section class="mt-5 pt-4">
-        <div class="mb-4">
-          <h3 class="mb-1 fw-bold">Comprar por Categorías</h3>
-          <p class="text-muted mb-0">
+        <h2 class="mb-1 fw-bold">Comprar por Categorías</h2>
+        <p class="text-muted mb-0">
             Explora la gran variedad de nuestro catálogo por departamentos.
           </p>
+          
+          <div class="mb-4">
+          
         </div>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           <div class="col" v-for="category in mappedCategories" :key="category.id">

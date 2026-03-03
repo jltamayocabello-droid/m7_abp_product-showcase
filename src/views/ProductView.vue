@@ -4,7 +4,7 @@
 
     <main class="container py-5">
       <section class="mb-5">
-        <h2 class="mb-4 fw-bold">Ofertas Especiales</h2>
+        <h2 class="text-center fw-bold mb-5">Ofertas Especiales</h2>
         <Carousel v-if="ofertas.length > 0" :breakpoints="breakpoints" :wrap-around="true">
           <Slide v-for="product in ofertas" :key="product.id">
             <div class="px-2 w-100 h-100 d-flex">
@@ -24,7 +24,7 @@
 
       <!-- Shop by Category Carousel -->
       <section class="mb-5">
-        <h3 class="mb-4 fw-bold">Categorías</h3>
+        <h2 class="text-center fw-bold mb-5">Categorías</h2>
         <Carousel
           v-if="mappedCategories.length > 0"
           :breakpoints="categoryBreakpoints"
@@ -98,9 +98,9 @@
         v-for="catGroup in categoriesWithProducts"
         :key="catGroup.categoryName"
         :id="'category-' + catGroup.categoryName"
-        class="mb-5 border-top pt-4"
+        class="mb-5 pt-4"
       >
-        <h3 class="mb-4 fw-bold">{{ catGroup.categoryName }}</h3>
+        <h2 class="text-center fw-bold mb-5">{{ catGroup.categoryName }}</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
           <div class="col" v-for="product in catGroup.products" :key="product.id">
             <ProductCard :product="product" class="h-100" />

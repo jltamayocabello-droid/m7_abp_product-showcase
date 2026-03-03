@@ -1,9 +1,24 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand" href="#"
-        ><strong>Product</strong> <span class="text-danger">ShowCase</span></a
-      >
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <svg
+          class="me-2 text-primary"
+          width="32"
+          height="32"
+          viewBox="0 0 76 76"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+        >
+          <path
+            fill="currentColor"
+            stroke-width="0.2"
+            stroke-linejoin="round"
+            d="M 28.5,60L 22,55.25L 22,25L 27,25L 26.9167,22.1667C 26.9167,17.7944 30.4611,14.25 34.8333,14.25C 38.1014,14.25 40.907,16.2303 42.1156,19.0563C 46.0405,19.5251 49,22.6989 49,26.75L 49,29L 50.75,30L 54,30L 54,60L 28.5,60 Z M 25.3333,32.0625L 27.9583,30.4271L 27.9583,57.25L 28.5,57.7917L 28.5,30.0834L 33,30L 33,27L 24,27L 25.3333,32.0625 Z M 36,27L 36,30L 46,30L 46,28.75L 44,27L 36,27 Z M 43,25L 45.5,25C 45.023,23.6504 44.3496,22.977 43,22.5L 43,25 Z M 30.0833,22.1667L 30,25L 33.25,25C 33.8179,22.2022 36.0197,20.2735 38.6911,19.3948C 37.8287,18.1968 36.4221,17.4167 34.8333,17.4167C 32.21,17.4167 30.0833,19.5433 30.0833,22.1667 Z M 39.75,25L 39.75,22.5C 38.4003,22.977 37.477,23.6503 37,25L 39.75,25 Z "
+          />
+        </svg>
+        <strong>Product</strong> <span class="text-danger ms-1">ShowCase</span>
+      </a>
       <button
         class="navbar-toggler"
         type="button"
@@ -34,7 +49,7 @@
         <!-- Enlaces Centrados -->
         <div class="navbar-nav mx-auto align-items-center text-center mt-3 mt-lg-0">
           <RouterLink to="/" class="nav-link mx-3">Inicio</RouterLink>
-          <RouterLink to="/products" class="nav-link mx-3">Productos disponibles</RouterLink>
+          <RouterLink to="/products" class="nav-link mx-3">Productos Disponibles</RouterLink>
           <RouterLink v-if="isAdmin" to="/admin/products" class="nav-link mx-3"
             >Crud Productos</RouterLink
           >
@@ -45,8 +60,7 @@
           <template v-if="!isAuth">
             <RouterLink
               to="/login"
-              class="btn btn-light border ms-2 fw-semibold"
-              style="color: #333"
+              class="btn btn-outline-primary rounded-pill px-4 ms-2 fw-semibold"
               >Iniciar Sesión</RouterLink
             >
           </template>
@@ -54,8 +68,7 @@
           <template v-else>
             <span class="nav-link">Hola, {{ displayName }}</span>
             <button
-              class="btn ms-2 text-white fw-semibold"
-              style="background-color: darkred; border-color: darkred"
+              class="btn btn-outline-danger rounded-pill px-4 ms-2 fw-semibold"
               @click.prevent="onLogout"
             >
               Cerrar Sesión
