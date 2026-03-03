@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand" href="#">Product ShowCase</a>
+      <a class="navbar-brand" href="#"
+        ><strong>Product</strong> <span class="text-danger">ShowCase</span></a
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -16,9 +18,9 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <!-- Search bar -->
         <form
-          class="d-flex mx-auto my-2 my-lg-0"
+          class="d-flex ms-lg-4 my-2 my-lg-0"
           role="search"
-          style="max-width: 400px; width: 100%"
+          style="max-width: 300px; width: 100%"
         >
           <input
             class="form-control me-2"
@@ -29,14 +31,17 @@
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
 
-        <div class="navbar-nav ms-auto align-items-center mt-3 mt-lg-0">
-          <RouterLink to="/" class="nav-link">Inicio</RouterLink>
-          <RouterLink to="/products" class="nav-link">Productos</RouterLink>
-
-          <RouterLink v-if="isAdmin" to="/admin/products" class="nav-link"
+        <!-- Enlaces Centrados -->
+        <div class="navbar-nav mx-auto align-items-center text-center mt-3 mt-lg-0">
+          <RouterLink to="/" class="nav-link mx-3">Inicio</RouterLink>
+          <RouterLink to="/products" class="nav-link mx-3">Productos disponibles</RouterLink>
+          <RouterLink v-if="isAdmin" to="/admin/products" class="nav-link mx-3"
             >Crud Productos</RouterLink
           >
+        </div>
 
+        <!-- Acciones Lado Derecho -->
+        <div class="navbar-nav align-items-center mt-3 mt-lg-0">
           <template v-if="!isAuth">
             <RouterLink
               to="/login"
@@ -56,6 +61,17 @@
               Cerrar Sesión
             </button>
           </template>
+
+          <div class="vr mx-3 d-none d-lg-block"></div>
+
+          <!-- Botón de Tema -->
+          <button
+            class="btn btn-outline-secondary border-0 ms-2"
+            @click="toggleTheme"
+            title="Cambiar Tema"
+          >
+            <i :class="isDarkMode ? 'bi bi-sun-fill text-warning' : 'bi bi-moon-stars-fill'"></i>
+          </button>
 
           <button
             class="btn btn-outline-dark ms-3 position-relative"
@@ -95,7 +111,7 @@
 
 <script setup>
 import { RouterLink, RouterView, useRouter } from 'vue-router'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useUserStore } from './stores/user.store'
 import { useCartStore } from './stores/cart.store'
 import { logout } from './services/auth'
@@ -107,6 +123,29 @@ import { seedDatabase } from './scripts/seedProducts'
 const router = useRouter()
 const userStore = useUserStore()
 const cartStore = useCartStore()
+
+// Theme Logic
+const isDarkMode = ref(false)
+
+const toggleTheme = () => {
+  isDarkMode.value = !isDarkMode.value
+  const theme = isDarkMode.value ? 'dark' : 'light'
+  document.documentElement.setAttribute('data-bs-theme', theme)
+  localStorage.setItem('theme', theme)
+}
+
+onMounted(() => {
+  const savedTheme = localStorage.getItem('theme')
+  if (
+    savedTheme === 'dark' ||
+    (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    isDarkMode.value = true
+    document.documentElement.setAttribute('data-bs-theme', 'dark')
+  } else {
+    document.documentElement.setAttribute('data-bs-theme', 'light')
+  }
+})
 
 const isAuth = computed(() => userStore.isAuthenticated)
 const isAdmin = computed(() => userStore.user?.role === 'admin')

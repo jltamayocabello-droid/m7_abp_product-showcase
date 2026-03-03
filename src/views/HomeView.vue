@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeaderComp>Inicio</HeaderComp>
+    <HeaderComp>Bienvenido/a disfruta de nuestras ofertas</HeaderComp>
 
     <main class="container py-5">
       <!-- Hero Banner -->

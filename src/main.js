@@ -4,6 +4,8 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
+import './assets/main.css'
+
 import { auth } from './firebaseConfig'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useUserStore } from './stores/user.store'
@@ -23,4 +25,3 @@ onAuthStateChanged(auth, async (firebaseUser) => {
     mounted = true
   }
 })
-
