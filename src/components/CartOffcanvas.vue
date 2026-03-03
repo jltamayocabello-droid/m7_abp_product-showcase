@@ -36,7 +36,7 @@
           />
           <div class="flex-grow-1">
             <h6 class="mb-0 text-truncate" style="max-width: 150px">{{ item.product.name }}</h6>
-            <span class="text-success fw-bold">${{ item.product.price }}</span>
+            <span class="text-success fw-bold">{{ formatPrice(item.product.price) }}</span>
             <div class="d-flex align-items-center mt-2">
               <button
                 class="btn btn-sm btn-outline-secondary"
@@ -67,7 +67,7 @@
       <div class="border-top pt-3 mt-auto" v-if="cartStore.cart.length > 0">
         <div class="d-flex justify-content-between mb-3">
           <span class="fw-bold">Total:</span>
-          <span class="fw-bold fs-5">${{ cartStore.cartTotal }}</span>
+          <span class="fw-bold fs-5">{{ formatPrice(cartStore.cartTotal) }}</span>
         </div>
         <div class="d-flex gap-2">
           <button class="btn btn-outline-secondary w-50" @click="cartStore.clearCart()">
@@ -84,6 +84,10 @@
 import { useCartStore } from '@/stores/cart.store'
 
 const cartStore = useCartStore()
+
+const formatPrice = (value) => {
+  return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(value)
+}
 
 const decreaseQty = (item) => {
   cartStore.updateQuantity(item.product.id, item.quantity - 1)

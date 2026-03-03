@@ -127,10 +127,12 @@ async function onLogout() {
   }
 }
 
-// Descomentar esto solo una vez para llenar la base de datos y luego volver a comentar
+// Descomentar esto solo una vez para llenar o migrar la base de datos
 // onMounted(async () => {
-//   console.log('Seeding products...')
-//   await seedDatabase()
+//   // console.log('Seeding products...')
+//   // await seedDatabase()
+//   // console.log('Running data migration...')
+//   // await migrateProducts()
 // })
 </script>
 

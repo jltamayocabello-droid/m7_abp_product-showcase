@@ -3,18 +3,6 @@
     <HeaderComp>Inicio</HeaderComp>
 
     <main class="container py-5">
-      <!-- Section: Total Products Stat (Original) -->
-      <section class="mb-5 d-flex justify-content-center">
-        <div class="card card-quantity-products shadow-sm border-0 bg-light rounded-4">
-          <div class="card-body text-center p-5">
-            <h1 class="card-quantity-products__value text-success mb-0">
-              {{ productsStore.quantityProducts }}
-            </h1>
-            <p class="card-quantity-products__text text-muted fw-bold">Productos Disponibles</p>
-          </div>
-        </div>
-      </section>
-
       <!-- Section: Ofertas Destacadas -->
       <section>
         <div class="d-flex justify-content-between align-items-end mb-4">
@@ -79,26 +67,6 @@ onMounted(async () => {
 </script>
 
 <style lang="css" scoped>
-.card-quantity-products {
-  max-width: 350px;
-  transition: transform 0.3s ease;
-}
-
-.card-quantity-products:hover {
-  transform: translateY(-5px);
-}
-
-.card-quantity-products__value {
-  font-size: 5rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.card-quantity-products__text {
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-}
-
 /* Carousel Custom Styles */
 :deep(.carousel__prev),
 :deep(.carousel__next) {

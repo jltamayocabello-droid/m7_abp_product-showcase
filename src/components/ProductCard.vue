@@ -18,7 +18,7 @@
           {{ product.description }}
         </p>
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <span class="fw-bold fs-5">${{ product.price }}</span>
+          <span class="fw-bold fs-5">{{ formatPrice(product.price) }}</span>
           <small :class="['fw-semibold', stockAvailable > 0 ? 'text-success' : 'text-danger']">
             {{ stockAvailable > 0 ? `Stock: ${stockAvailable}` : 'Agotado' }}
           </small>
@@ -56,6 +56,10 @@ const stockAvailable = computed(() => {
   }
   return props.product.stock !== undefined ? props.product.stock : 0
 })
+
+const formatPrice = (value) => {
+  return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(value)
+}
 
 const addToCart = () => {
   if (stockAvailable.value > 0) {

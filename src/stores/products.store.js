@@ -19,12 +19,17 @@ export const useProductsStore = defineStore('products', () => {
   const subcategories = ref([
     { id: 1, name: 'precio normal' },
     { id: 2, name: 'oferta' },
+    { id: 3, name: 'agotado' },
   ])
 
   const products = ref([])
 
   //GETTERS -> PROPIEDADES COMPUTADAS
   const quantityProducts = computed(() => products.value.length)
+
+  const totalStock = computed(() => {
+    return products.value.reduce((acc, product) => acc + (product.stock || 0), 0)
+  })
 
   //MÉTODOS -> ACTIONS
 
@@ -98,6 +103,7 @@ export const useProductsStore = defineStore('products', () => {
     subcategories,
     products,
     quantityProducts,
+    totalStock,
     fetchProducts,
     addProduct,
     deleteProduct,
