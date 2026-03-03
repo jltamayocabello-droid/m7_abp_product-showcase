@@ -23,7 +23,7 @@ Nuestro objetivo 📋
 Desarrollar una aplicación Vue moderna, optimizada y mantenible que permita:
 ● Visualizar un catálogo de productos obtenidos desde una API REST.
 ● Utilizar componentes reutilizables y bien organizados.
-● Gestionar el estado global con Vuex.
+● Gestionar el estado global con Pinia.
 ● Incorporar pruebas unitarias y e2e.
 ● Integrar una librería UI y considerar Nuxt o Quasar según el enfoque del
 proyecto.
@@ -50,7 +50,7 @@ Lección 1: Componentes y ciclo de vida
 🎯 Objetivo: Iniciar la base del proyecto con estructura de componentes
 reutilizables.
 📋 Tareas a desarrollar:
-○ Configurar el proyecto con Vue CLI.
+○ Configurar el proyecto con Vite y Vue 3 (Composition API).
 ○ Crear el componente <ProductCard> para mostrar un producto.
 ○ Implementar al menos un ciclo de vida (mounted, created, etc.).
 ○ Diseñar la estructura base de la app: <App>, <Header>, <Footer>,
@@ -71,13 +71,13 @@ JSON-server).
 ➜ Esta lección conecta los componentes del paso anterior con datos reales y
 lógica.
 
-Lección 3: Almacenamiento de estado en Vuex
+Lección 3: Almacenamiento de estado en Pinia
 
 🎯 Objetivo: Centralizar el estado y mejorar la arquitectura de datos.
 📋 Tareas a desarrollar:
-● Configurar Vuex y separar en módulos (productos, filtros, favoritos).
-● Mover el consumo de API a acciones Vuex.
-● Usar getters para computar productos filtrados.
+● Configurar Pinia y separar en stores (products, cart, user).
+● Mover el consumo de API a acciones en Pinia.
+● Usar getters y properties computadas.
 ● Conectar los componentes visuales con el estado centralizado.
 ➜ Esta entrega optimiza el flujo de datos y prepara la app para escalar.
 
@@ -116,7 +116,9 @@ Lección 5: Librerías y Frameworks Complementarios
 Referencias 🦺
 Vue.js Docs Axios Docs Vue Test Utils Vuetify
 
-Vuex Docs Jest Cypress
+Pinia Docs
+Jest
+Cypress
 
 Quasar
 Nuxt
