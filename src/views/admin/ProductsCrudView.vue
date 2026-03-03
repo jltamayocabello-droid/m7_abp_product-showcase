@@ -32,11 +32,24 @@
                 <option
                   :value="category.name"
                   v-for="category in productsStore.categories"
-                  :key="category.di"
+                  :key="category.id"
                 >
                   {{ category.name }}
                 </option>
               </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Subcategoría: </label>
+              <select class="form-control" required v-model="subcategory">
+                <option value="">Debe elegir una subcategoría</option>
+                <option :value="sub.name" v-for="sub in productsStore.subcategories" :key="sub.id">
+                  {{ sub.name }}
+                </option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Stock: </label>
+              <input type="number" class="form-control" min="0" required v-model="stock" />
             </div>
             <div>
               <button
@@ -78,6 +91,8 @@
               <th scope="col">Imagen</th>
               <th scope="col">Precio</th>
               <th scope="col">Categoría</th>
+              <th scope="col">Subcategoría</th>
+              <th scope="col">Stock</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
@@ -90,6 +105,8 @@
               </td>
               <td>{{ product.price }}</td>
               <td>{{ product.category }}</td>
+              <td>{{ product.subcategory || 'N/A' }}</td>
+              <td>{{ product.stock !== undefined ? product.stock : 'N/A' }}</td>
               <td>
                 <button class="btn btn-warning me-2" @click="preEditProduct(product.id)">
                   Editar
@@ -119,6 +136,8 @@ const name = ref('')
 const image = ref('https://placehold.co/300x200.png')
 const price = ref(1)
 const category = ref('')
+const subcategory = ref('')
+const stock = ref(0)
 const description = ref('')
 const idProduct = ref('')
 
@@ -132,6 +151,9 @@ const validForm = computed(() => {
     image.value &&
     price.value &&
     category.value &&
+    subcategory.value &&
+    stock.value !== '' &&
+    stock.value >= 0 &&
     price.value > 0 &&
     description.value
   return rulesForm
@@ -144,6 +166,8 @@ const resetForm = () => {
   image.value = 'https://placehold.co/300x200.png'
   price.value = 1
   category.value = ''
+  subcategory.value = ''
+  stock.value = 0
   description.value = ''
   idProduct.value = ''
 }
@@ -154,6 +178,8 @@ const addProduct = async () => {
     image.value,
     price.value,
     category.value,
+    subcategory.value,
+    stock.value,
     description.value,
   )
 
@@ -171,6 +197,8 @@ const editProduct = async () => {
     image.value,
     price.value,
     category.value,
+    subcategory.value,
+    stock.value,
     description.value,
     idProduct.value,
   )
@@ -212,6 +240,8 @@ const preEditProduct = async (id) => {
   image.value = product.image
   price.value = product.price
   category.value = product.category
+  subcategory.value = product.subcategory || ''
+  stock.value = product.stock !== undefined ? product.stock : 0
   description.value = product.description
   idProduct.value = product.id
 

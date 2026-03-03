@@ -12,6 +12,13 @@ export const useProductsStore = defineStore('products', () => {
     { id: 1, name: 'Hogar' },
     { id: 2, name: 'Cocina' },
     { id: 3, name: 'Jardín' },
+    { id: 4, name: 'Electrónica' },
+    { id: 5, name: 'Ropa' },
+  ])
+
+  const subcategories = ref([
+    { id: 1, name: 'precio normal' },
+    { id: 2, name: 'oferta' },
   ])
 
   const products = ref([])
@@ -37,9 +44,9 @@ export const useProductsStore = defineStore('products', () => {
     }
   }
 
-  async function addProduct(name, image, price, category, description) {
+  async function addProduct(name, image, price, category, subcategory, stock, description) {
     try {
-      let data = { name, image, price, category, description }
+      let data = { name, image, price, category, subcategory, stock, description }
       const docRef = await addDoc(collection(db, 'products'), data)
 
       products.value.push({ id: docRef.id, ...data })
@@ -67,16 +74,15 @@ export const useProductsStore = defineStore('products', () => {
     }
   }
 
-  async function editProduct(name, image, price, category, description, id) {
+  async function editProduct(name, image, price, category, subcategory, stock, description, id) {
     try {
+      let data = { name, image, price, category, subcategory, stock, description }
 
-			let data = { name, image, price, category, description };
+      await updateDoc(doc(db, 'products', id), data)
 
-			await updateDoc(doc(db, 'products', id), data);
+      let indexProduct = products.value.findIndex((p) => p.id == id)
 
-			let indexProduct = products.value.findIndex(p => p.id == id);
-
-			products.value[indexProduct] = {...data, id};
+      products.value[indexProduct] = { ...data, id }
 
       return { success: 'Producto editado con éxito.' }
     } catch (error) {
@@ -89,6 +95,7 @@ export const useProductsStore = defineStore('products', () => {
   //EXPORTACIÓN DE LO QUE QUEREMOS DEJAR PÚBLICO
   return {
     categories,
+    subcategories,
     products,
     quantityProducts,
     fetchProducts,
