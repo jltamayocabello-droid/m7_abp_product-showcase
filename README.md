@@ -1,130 +1,199 @@
-Proyecto: Vue Product Showcase
+# 📝 PROYECTO ABP M7: Vue Product Showcase
 
-Evaluación del módulo: DESARROLLO DE APLICACIONES FRONT-END CON
-FRAMEWORK VUE
+![Estado del Proyecto](https://img.shields.io/badge/Estado-Finalizado-yellow)
+![Stack](https://img.shields.io/badge/Stack-Vue.js_3_%7C_Vite_%7C_Pinia-brightgreen)
+![Router](https://img.shields.io/badge/Vue_Router-4.x-blue)
+![UI](https://img.shields.io/badge/UI-Bootstrap_5.3-7952b3)
 
-Situación inicial 📍
+---
 
-Unidad solicitante: Departamento de E-commerce de una empresa de tecnología
-ficticia
+## � Descripción del Proyecto
 
-El equipo de desarrollo del área de e-commerce necesita una aplicación SPA
-(Single Page Application) que sirva como catálogo interactivo de productos. Se
-busca un sistema moderno, dinámico y responsive que permita a los usuarios
-visualizar información de productos, filtrar por categorías y ver detalles
-individuales. Actualmente, el equipo utiliza una API interna para exponer los
-productos, pero no cuentan con una interfaz robusta que consuma esos datos ni
-gestione el estado de forma centralizada. Además, buscan asegurar la calidad de
-la solución con pruebas automatizadas y dejar abierta la posibilidad de escalar la
-aplicación a móvil o escritorio.
+**Unidad solicitante:** Departamento de E-commerce de una empresa de tecnología.
 
-Nuestro objetivo 📋
+El equipo de desarrollo del área de e-commerce necesitaba una aplicación SPA (Single Page Application) que sirviera como catálogo interactivo de productos. Se buscaba un sistema moderno, dinámico y responsive que permitiera a los usuarios visualizar información de productos, filtrar por categorías y ver detalles individuales. Además, se requería una interfaz robusta para gestionar el estado de forma centralizada.
 
-Desarrollar una aplicación Vue moderna, optimizada y mantenible que permita:
-● Visualizar un catálogo de productos obtenidos desde una API REST.
-● Utilizar componentes reutilizables y bien organizados.
-● Gestionar el estado global con Pinia.
-● Incorporar pruebas unitarias y e2e.
-● Integrar una librería UI y considerar Nuxt o Quasar según el enfoque del
-proyecto.
-La aplicación deberá ser clara, accesible, modular y escalable para futuras
-mejoras.
+El equipo desarrolló una solución completa aplicando de forma progresiva los conceptos del módulo: componentes reutilizables, consumo de API simulada, rutas dinámicas, estado global con Pinia y un diseño moderno estilo Glassmorphism.
 
-Requerimientos
+---
 
-En este apartado se deben listar las funcionalidades y especificaciones técnicas
-necesarias para cumplir con los objetivos planteados. Es fundamental detallar
-tanto los aspectos generales como los específicos, proporcionando al participante una guía clara de las expectativas técnicas y funcionales del proyecto.
+## 🎯 Objetivo
 
-Paso a paso 👣
+Desarrollar una aplicación Vue moderna, optimizada y mantenible llamada **Product ShowCase**, que permita gestionar un catálogo de productos interactivo. Se espera que la finalización de este proyecto demuestre:
 
-Este proyecto refiere exclusivamente al módulo 7: DESARROLLO DE APLICACIONES FRONT-END CON FRAMEWORK VUE, y se compone de 5 etapas (lecciones), las cuales podrás avanzar de forma progresiva y escalonada con la ayuda de los manuales teóricos y los contenidos desarrollados en las clases en vivo.
-Ten en cuenta de invertir tiempo asincrónicos para el desarrollo de cada etapa a
-modo de poder finalizar el módulo y realizar la entrega formal de tu propuesta.
-Cualquier consulta que surja compártela en los espacios sincrónicos para resolver
-las dudas en equipo.
+- Comprensión y aplicación de los fundamentos de Vue.js con Composition API (`<script setup>`).
+- Utilización de templates, eventos y formularios reactivos.
+- Implementación de una estructura de rutas y navegación con Vue Router.
+- Gestión de estado global centralizado con Pinia.
+- Integración fluida de diseño profesional (Bootstrap + CSS Custom).
 
-A continuación encontrarás las consignas y tareas a desarrollar:
+---
 
-Lección 1: Componentes y ciclo de vida
-🎯 Objetivo: Iniciar la base del proyecto con estructura de componentes
-reutilizables.
-📋 Tareas a desarrollar:
-○ Configurar el proyecto con Vite y Vue 3 (Composition API).
-○ Crear el componente <ProductCard> para mostrar un producto.
-○ Implementar al menos un ciclo de vida (mounted, created, etc.).
-○ Diseñar la estructura base de la app: <App>, <Header>, <Footer>,
-<ProductList>.
+## 🛠️ Requerimientos Técnicos
 
-➜ Esta lección establece las bases visuales y de estructura para el resto del
-proyecto.
+Este proyecto cumple con los estándares exigidos para el módulo 7:
 
-Lección 2: Consumo de datos desde una API
+- ✅ **Componentes Vue**: Arquitectura modular y escalable.
+- ✅ **Composición API**: Uso moderno de Vue 3.
+- ✅ **Binding reactivo**: Formularios completos para el CRUD y Carrito de Compras.
+- ✅ **Manejo de Eventos**: Respuestas interactivas de la UI.
+- ✅ **Rutas dinámicas**: Vista individual por producto y protección de rutas CRUD.
+- ✅ **Al menos 3 vistas**: Inicio, Catálogo (Productos Disponibles) y Administración (CRUD).
+- ✅ **Diseño Profesional**: Implementación profunda de Bootstrap 5 con estilos extra (Glassmorphism, Dark/Light mode).
+- ✅ **Estado global**: Gestión efectiva del estado de productos, carrito de compras y usuarios utilizando **Pinia** (sustituyendo el clásico Vuex).
 
-🎯 Objetivo: Incorporar productos dinámicos mediante consumo de API.
-📋 Tareas a desarrollar:
-○ Integrar Axios y obtener datos desde una API (pública o mock con
-JSON-server).
-○ Mostrar productos dinámicamente en <ProductList>.
-○ Incluir gestión de errores y carga (loading, error, empty).
-○ Agregar filtro simple por categoría.
-➜ Esta lección conecta los componentes del paso anterior con datos reales y
-lógica.
+---
 
-Lección 3: Almacenamiento de estado en Pinia
+## 📂 Documentación Técnica
 
-🎯 Objetivo: Centralizar el estado y mejorar la arquitectura de datos.
-📋 Tareas a desarrollar:
-● Configurar Pinia y separar en stores (products, cart, user).
-● Mover el consumo de API a acciones en Pinia.
-● Usar getters y properties computadas.
-● Conectar los componentes visuales con el estado centralizado.
-➜ Esta entrega optimiza el flujo de datos y prepara la app para escalar.
+### 1. Stack Tecnológico
 
-Lección 4: Pruebas en Vue
+- **Vue.js 3**: Framework principal usando Composition API.
+- **Vite**: Bundler y entorno de desarrollo ultra rápido.
+- **Vue Router 4**: Gestión de navegación SPA.
+- **Pinia**: Manejo moderno del estado global (Products, Cart, User).
+- **Bootstrap 5.3 + Custom CSS**: Responsividad, componentes UI y estética _Glassmorphism_.
+- **Vue3-Carousel**: Implementación de sliders para productos destacados.
 
-🎯 Objetivo: Asegurar calidad de componentes y flujos clave.
-📋 Tareas a desarrollar:
-● Escribir 2 pruebas unitarias con Vue Test Utils + Jest:
-○ Render correcto de <ProductCard>
-○ Respuesta visual ante error de API
-● Crear 1 prueba end-to-end con Cypress o Nightwatch:
-○ Usuario filtra productos y ve resultados.
+### 2. Estructura del Proyecto
 
-➜ Esta etapa valida el comportamiento de lo construido hasta aquí.
+```
+m7_abp_vue-product-showcase/
+│
+├── index.html
+├── vite.config.js
+├── README.md
+│
+├── src/
+│   ├── main.js                    # Punto de entrada, Pinia y Router
+│   ├── App.vue                    # Layout raíz, Navbar y Footer
+│   │
+│   ├── assets/
+│   │   └── main.css               # Variables Neon, Dark Mode, Glassmorphism
+│   │
+│   ├── components/
+│   │   ├── CartOffcanvas.vue      # Carrito lateral interactivo
+│   │   ├── ProductCard.vue        # Tarjeta reutilizable de producto
+│   │   └── layouts/
+│   │       ├── HeaderComp.vue     # Banner dinámico para vistas
+│   │       └── FooterComp.vue     # Pie de página global
+│   │
+│   ├── views/
+│   │   ├── HomeView.vue           # Inicio con carrusel de ofertas
+│   │   ├── ProductView.vue        # Catálogo filtrable por departamentos
+│   │   ├── LoginView.vue          # Sistema de sesión (Admin/User)
+│   │   ├── RegisterView.vue       # Registro de nuevos usuarios
+│   │   └── admin/
+│   │       └── ProductsCrudView.vue # Formulario completo para gestión (Admin)
+│   │
+│   ├── stores/
+│   │   ├── products.store.js      # Catálogo, categorías y CRUD de productos
+│   │   ├── cart.store.js          # Lógica de compras y cálculos matemáticos
+│   │   └── user.store.js          # Guardado de credenciales y roles
+│   │
+│   └── router/
+│       └── index.js               # Rutas con lazy loading
+```
 
-Lección 5: Librerías y Frameworks Complementarios
+### 3. Arquitectura de Stores (Pinia)
 
-🎯 Objetivo: Aplicar diseño visual profesional y mejorar arquitectura.
-📋 Tareas a desarrollar:
-● Elegir una librería UI (Vuetify, Element Plus, etc.) y aplicarla.
-● Estilizar <ProductCard>, botones, inputs, etc.
-● (Opcional) Migrar a Nuxt o Quasar y justificar por qué.
-● Aplicar diseño responsive y tema claro/oscuro.
+#### Store `products` (`products.store.js`)
 
-➜ Esta lección refina la experiencia visual del usuario final.
+Maneja toda la lista de productos disponibles, stock en tiempo real y listas de subcategorías derivadas del inventario actual.
 
-¿Qué vamos a validar? 🔍
+- Funciones CRUD completas: Agregar, Editar, Eliminar y Leer.
 
-● Arquitectura escalable por componentes.
-● Integración y visualización correcta de datos.
-● Gestión efectiva del estado global.
-● Cobertura básica de pruebas (unitarias y e2e).
-● Uso profesional de librerías UI.
-● Entrega funcional, limpia y documentada.
+#### Store `cart` (`cart.store.js`)
 
-Referencias 🦺
-Vue.js Docs Axios Docs Vue Test Utils Vuetify
+Controla lo que el usuario quiere comprar.
 
-Pinia Docs
-Jest
-Cypress
+- Verifica constantemente el `stockAvailable` para impedir agregar más de lo permitido.
+- Calcula totales monetarios al vuelo.
 
-Quasar
-Nuxt
+#### Store `user` (`user.store.js`)
 
-Entregables ✅
-● Código fuente en GitHub con estructura clara.
-● README.md con instrucciones de instalación y justificaciones técnicas.
-● Evidencias de pruebas ejecutadas.
-● Demo funcional o capturas del producto final.
+Controla la sesión. Determina qué partes de la UI se renderizan (ej. La vista CRUD solo es visible para cuentas `admin`).
+
+---
+
+## 🚀 Cómo ejecutar este proyecto
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/jltamayocabello-droid/m7_abp_product-showcase.git
+cd m7_abp_product-showcase
+```
+
+### 2. Instalar dependencias
+
+```bash
+npm install
+```
+
+### 3. Ejecutar en modo desarrollo
+
+```bash
+npm run dev
+```
+
+### 4. Uso de la aplicación
+
+- **Público**: Acceso a la página de Inicio, visor de Productos Disponibles y Carrito de compras funcional según el stock.
+- **Administrador**: Al iniciar sesión como Admin (si configuraste roles en `user.store`), la navbar habilitará la ruta protegida _"Crud Productos"_, la cual permite alterar el inventario en tiempo real.
+
+---
+
+## 🌐 Despliegue (Demo)
+
+**Repositorio GitHub:** 🔗 **[https://github.com/jltamayocabello-droid/m7_abp_product-showcase](https://github.com/jltamayocabello-droid/m7_abp_product-showcase)**
+
+_(Enlace a GitHub Pages o Vercel pendiente de actualizar)_
+
+---
+
+## 💡 Justificación de Decisiones Técnicas
+
+### Composition API y Pinia
+
+**Decisión**: Optar por la sintaxis Setup de Vue 3 junto a Pinia (descartando Options API y Vuex).
+**Justificación**: Permite un código mucho más modular, legible y fácil de debuggear. Pinia elimina las mutaciones estáticas de Vuex, permitiendo alterar y leer estados con reactividad nativa ultraveloz.
+
+### Glassmorphism y Paleta Neón
+
+**Decisión**: Personalizar Bootstrap de manera agresiva utilizando `backdrop-filter: blur`, gradientes semitransparentes y una paleta de colores oscuro-neón.
+**Justificación**: Demostrar la capacidad de fusionar librerías UI de manera personalizada para crear plataformas que se sientan _Premium_, dinámicas y de alto impacto visual.
+
+---
+
+## 📱 Funcionalidades Destacadas
+
+| Funcionalidad           | Descripción                                              |
+| ----------------------- | -------------------------------------------------------- |
+| 🛍️ **E-Commerce Real**  | Lógica de Carrito de Compras enlazada al stock global.   |
+| 🎨 **Modo Noche**       | Switch interactivo de variables globales y colores Neón. |
+| 🧱 **Arquitectura SPA** | Transiciones fluidas sin recarga de página (Vue Router). |
+| 🛡️ **Control de Roles** | Ocultamiento reactivo de Vistas Administrativas.         |
+| 🚀 **Gestión CRUD**     | Tabla inteligente con inserción de productos en vivo.    |
+
+---
+
+## ✒️ Autor
+
+**Jorge Tamayo Cabello**
+
+_Estudiante de Desarrollo Front-End Trainee – SENCE_
+
+---
+
+## 📄 Licencia
+
+Este proyecto es parte de un trabajo académico para SENCE y está disponible con fines educativos.
+
+---
+
+## 🙏 Agradecimientos
+
+- **SENCE** por la formación en el área de desarrollo web moderno.
+- **Comunidad Vue.js** por proporcionar herramientas escalables increíbles.
+- **Templarian (WindowsIcons)** por diseñar y proporcionar bajo Dominio Público el icono SVG del logotipo.
