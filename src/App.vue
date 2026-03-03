@@ -33,7 +33,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <!-- Search bar -->
         <form
-          class="d-flex ms-lg-4 my-2 my-lg-0"
+          class="d-flex ms-lg-4 mx-auto my-2 my-lg-0"
           role="search"
           style="max-width: 300px; width: 100%"
           @submit.prevent="onGlobalSearch"

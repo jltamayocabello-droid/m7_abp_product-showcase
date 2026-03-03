@@ -92,6 +92,96 @@ export const seedProductsData = [
     description: 'Licuadora de 1000W con vaso de vidrio',
     image: 'https://placehold.co/300x200?text=Licuadora',
   },
+  {
+    name: 'Smart TV 55 Pulgadas',
+    category: 'Electrónica',
+    subcategory: 'oferta',
+    stock: 8,
+    price: 450,
+    description: 'Televisor 4K UHD con control por voz',
+    image: 'https://placehold.co/300x200?text=Smart+TV',
+  },
+  {
+    name: 'Reloj Inteligente',
+    category: 'Electrónica',
+    subcategory: 'precio normal',
+    stock: 35,
+    price: 150,
+    description: 'Monitor de ritmo cardíaco y notificaciones',
+    image: 'https://placehold.co/300x200?text=Reloj',
+  },
+  {
+    name: 'Pantalón Vaquero',
+    category: 'Ropa',
+    subcategory: 'precio normal',
+    stock: 60,
+    price: 40,
+    description: 'Jeans de corte recto y tela elástica',
+    image: 'https://placehold.co/300x200?text=Pantalón',
+  },
+  {
+    name: 'Zapatillas Deportivas',
+    category: 'Ropa',
+    subcategory: 'oferta',
+    stock: 25,
+    price: 80,
+    description: 'Calzado ligero para correr larga distancia',
+    image: 'https://placehold.co/300x200?text=Zapatillas',
+  },
+  {
+    name: 'Cafetera de Cápsulas',
+    category: 'Cocina',
+    subcategory: 'precio normal',
+    stock: 12,
+    price: 110,
+    description: 'Prepara espresso y lattes en segundos',
+    image: 'https://placehold.co/300x200?text=Cafetera',
+  },
+  {
+    name: 'Batidora de Mano',
+    category: 'Cocina',
+    subcategory: 'oferta',
+    stock: 40,
+    price: 35,
+    description: 'Incluye accesorios para picar y batir',
+    image: 'https://placehold.co/300x200?text=Batidora',
+  },
+  {
+    name: 'Mesa de Centro',
+    category: 'Hogar',
+    subcategory: 'precio normal',
+    stock: 15,
+    price: 180,
+    description: 'Mesa de madera estilo rústico',
+    image: 'https://placehold.co/300x200?text=Mesa',
+  },
+  {
+    name: 'Cortinas Opacas',
+    category: 'Hogar',
+    subcategory: 'oferta',
+    stock: 50,
+    price: 55,
+    description: 'Bloquean el 99% de la luz solar',
+    image: 'https://placehold.co/300x200?text=Cortinas',
+  },
+  {
+    name: 'Maceta de Cerámica',
+    category: 'Jardín',
+    subcategory: 'precio normal',
+    stock: 70,
+    price: 20,
+    description: 'Ideal para plantas de interior',
+    image: 'https://placehold.co/300x200?text=Maceta',
+  },
+  {
+    name: 'Tijeras de Podar',
+    category: 'Jardín',
+    subcategory: 'oferta',
+    stock: 45,
+    price: 18,
+    description: 'Corte preciso para ramas gruesas',
+    image: 'https://placehold.co/300x200?text=Tijeras',
+  },
 ]
 
 export async function seedDatabase() {
@@ -99,5 +189,5 @@ export async function seedDatabase() {
     return await addDoc(collection(db, 'products'), prod)
   })
   await Promise.all(promises)
-  console.log('10 products seeded successfully')
+  console.log(`${seedProductsData.length} products seeded successfully`)
 }
