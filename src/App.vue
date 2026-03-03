@@ -175,7 +175,7 @@ async function onLogout() {
     await logout()
     userStore.clearUser()
     cartStore.clearCart()
-    router.push({ name: 'login' })
+    router.push({ name: 'login', query: { logout: 'success' } })
   } catch (e) {
     console.error(e)
   }

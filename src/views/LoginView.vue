@@ -43,11 +43,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { login, sendPasswordReset } from '../services/auth'
 
 const router = useRouter()
+const route = useRoute()
 const email = ref('')
 const password = ref('')
 const error = ref('')
@@ -79,6 +80,14 @@ async function onReset() {
     error.value = e.message || 'Error al enviar correo'
   }
 }
+
+onMounted(() => {
+  if (route.query.logout === 'success') {
+    success.value = 'Se ha cerrado sesión exitosamente.'
+    // Opcional: limpiar la URL sin recargar la página
+    router.replace({ query: null })
+  }
+})
 </script>
 
 <style scoped>
