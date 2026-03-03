@@ -76,15 +76,16 @@
       <section class="mt-5 pt-4">
         <h2 class="mb-1 fw-bold">Comprar por Categorías</h2>
         <p class="text-muted mb-0">
-            Explora la gran variedad de nuestro catálogo por departamentos.
-          </p>
-          
-          <div class="mb-4">
-          
-        </div>
+          Explora la gran variedad de nuestro catálogo por departamentos.
+        </p>
+
+        <div class="mb-4"></div>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           <div class="col" v-for="category in mappedCategories" :key="category.id">
-            <RouterLink to="/products" class="text-decoration-none">
+            <RouterLink
+              :to="{ path: '/products', hash: '#category-' + category.name }"
+              class="text-decoration-none"
+            >
               <div
                 class="card category-card h-100 border-0 shadow-sm text-center py-4 rounded-4 bg-light"
               >

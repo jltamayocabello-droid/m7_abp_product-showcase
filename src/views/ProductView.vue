@@ -117,7 +117,8 @@
 
 <script setup>
 import HeaderComp from '@/components/layouts/HeaderComp.vue'
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, nextTick, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import ProductCard from '@/components/ProductCard.vue'
 import { useProductsStore } from '@/stores/products.store'
 import { useCartStore } from '@/stores/cart.store'
@@ -127,6 +128,7 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 const productsStore = useProductsStore()
 const cartStore = useCartStore()
+const route = useRoute()
 
 const formatPrice = (value) => {
   return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(value)
@@ -206,7 +208,30 @@ const breakpoints = {
 
 onMounted(async () => {
   await productsStore.fetchProducts()
+
+  // Si llegamos con un hash desde otra vista (como Home o Footer)
+  if (route.hash) {
+    nextTick(() => {
+      // route.hash trae el formato '#category-X', extraemos 'X'
+      const categoryName = route.hash.replace('#category-', '')
+      setTimeout(() => {
+        scrollToCategory(categoryName)
+      }, 100)
+    })
+  }
 })
+
+// Por si cambia de hash estando ya dentro de ProductView (ej. usando el Footer)
+watch(
+  () => route.hash,
+  (newHash) => {
+    if (newHash && newHash.startsWith('#category-')) {
+      const categoryName = newHash.replace('#category-', '')
+      // Decodificamos la URI por si hay espacios (ej. '#category-Teclados%20Gamer')
+      scrollToCategory(decodeURIComponent(categoryName))
+    }
+  },
+)
 </script>
 
 <style lang="css" scoped>

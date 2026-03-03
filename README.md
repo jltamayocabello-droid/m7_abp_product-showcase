@@ -148,7 +148,7 @@ npm run dev
 
 **Repositorio GitHub:** 🔗 **[https://github.com/jltamayocabello-droid/m7_abp_product-showcase](https://github.com/jltamayocabello-droid/m7_abp_product-showcase)**
 
-_(Enlace a GitHub Pages o Vercel pendiente de actualizar)_
+**Deploy del proyecto:** 🔗 **[https://m7-abp-vue-product-showcase.web.app/](https://m7-abp-vue-product-showcase.web.app/)**
 
 ---
 

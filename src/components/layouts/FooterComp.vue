@@ -49,12 +49,20 @@
           <h5 class="fw-bold mb-3">Enlaces Útiles</h5>
           <ul class="list-unstyled">
             <li class="mb-2">
-              <RouterLink to="/" class="footer-link text-decoration-none text-muted">
+              <RouterLink
+                to="/"
+                @click="scrollToTop"
+                class="footer-link text-decoration-none text-muted"
+              >
                 <i class="bi bi-house-door me-2"></i>Inicio
               </RouterLink>
             </li>
             <li class="mb-2">
-              <RouterLink to="/products" class="footer-link text-decoration-none text-muted">
+              <RouterLink
+                to="/products"
+                @click="scrollToTop"
+                class="footer-link text-decoration-none text-muted"
+              >
                 <i class="bi bi-shop me-2"></i>Catálogo
               </RouterLink>
             </li>
@@ -88,6 +96,13 @@ import { RouterLink } from 'vue-router'
 const productsStore = useProductsStore()
 
 const categories = computed(() => productsStore.categories)
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
+}
 
 onMounted(async () => {
   if (productsStore.categories.length === 0) {
