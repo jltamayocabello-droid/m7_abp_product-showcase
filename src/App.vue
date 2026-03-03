@@ -120,6 +120,7 @@
 
   <RouterView />
   <CartOffcanvas />
+  <FooterComp />
 </template>
 
 <script setup>
@@ -129,6 +130,7 @@ import { useUserStore } from './stores/user.store'
 import { useCartStore } from './stores/cart.store'
 import { logout } from './services/auth'
 import CartOffcanvas from './components/CartOffcanvas.vue'
+import FooterComp from './components/layouts/FooterComp.vue'
 
 // Import seeder
 import { seedDatabase } from './scripts/seedProducts'
