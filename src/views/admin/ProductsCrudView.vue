@@ -39,7 +39,6 @@
               </select>
             </div>
             <div>
-              
               <v-btn
                 variant="outlined"
                 color="primary"
@@ -114,6 +113,7 @@
 document.title = 'CRUD Products'
 import HeaderComp from '@/components/layouts/HeaderComp.vue'
 import { onMounted, ref, computed } from 'vue'
+import Swal from 'sweetalert2'
 
 import { useProductsStore } from '@/stores/products.store'
 
@@ -154,8 +154,7 @@ const resetForm = () => {
 }
 
 const addProduct = async () => {
-
-   loading.value = true;
+  loading.value = true
 
   let respuesta = await productsStore.addProduct(
     name.value,
@@ -163,15 +162,26 @@ const addProduct = async () => {
     price.value,
     category.value,
     description.value,
-  );
+  )
 
-  loading.value = false;
+  loading.value = false
 
   if (respuesta.success) {
-    alert(respuesta.success)
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: respuesta.success,
+      showConfirmButton: false,
+      timer: 2000,
+    })
+
     resetForm()
   } else {
-    alert(respuesta.error)
+    Swal.fire({
+      icon: 'error',
+      title: 'Error!',
+      text: respuesta.error,
+    })
   }
 }
 
@@ -202,17 +212,28 @@ const createOrEdit = () => {
 }
 
 const deleteProduct = async (id, name) => {
-  if (!confirm('Está seguro que desea elminar el producto: ' + name)) {
-    return
-  }
-
-  let respuesta = await productsStore.deleteProduct(id, name)
-
-  if (respuesta.success) {
-    alert(respuesta.success)
-  } else {
-    alert(respuesta.error)
-  }
+  Swal.fire({
+    title: `¿Estás seguro que deseas eliminar el producto: ${name}?`,
+    text: '¡La eliminación no se puede revertir!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '¡Si, eliminar!',
+  })
+    .then(async (result) => {
+      if (result.isConfirmed) {
+        let respuesta = await productsStore.deleteProduct(id, name)
+        Swal.fire({
+          title: 'Eliminado',
+          text: respuesta.success,
+          icon: 'success',
+        })
+      }
+    })
+    .catch((error) => {
+      alert(error)
+    })
 }
 
 const preEditProduct = async (id) => {
