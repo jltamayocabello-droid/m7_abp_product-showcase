@@ -38,6 +38,15 @@ __screenshots__/
 # Vite
 *.timestamp-*-*.mjs
 
-#No  subir firebaseConfig.js
+# Entornos (Variables de entorno)
+.env
+.env.*
+!.env.example
 
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+
+# Ocultar configuraciones sensibles
 src/firebaseConfig.js
