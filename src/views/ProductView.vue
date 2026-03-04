@@ -22,9 +22,10 @@
         </div>
       </section>
 
+      <v-divider class="my-5 border-opacity-25" color="success"></v-divider>
+
       <!-- Shop by Category Carousel -->
       <section class="mb-5">
-        <h2 class="text-center fw-bold mb-5">Categorías</h2>
         <Carousel
           v-if="mappedCategories.length > 0"
           :breakpoints="categoryBreakpoints"

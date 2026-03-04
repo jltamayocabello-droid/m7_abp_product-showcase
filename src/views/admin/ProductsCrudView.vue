@@ -6,16 +6,19 @@
       <!-- Stats Section -->
       <div class="row justify-content-center mb-5">
         <div class="col-12 col-md-10">
-          <div class="card glass-panel shadow-sm border-0">
+          <div class="card glass-panel shadow-sm border-0 px-4 py-5 mb-5">
+            <h3 class="fw-bold mb-4 text-center pb-2">
+              <i class="bi bi-bar-chart-fill text-primary me-2"></i> Resumen de Inventario
+            </h3>
             <div class="card-body d-flex justify-content-around text-center py-4">
               <div>
                 <h2 class="text-primary mb-0 fw-bold">{{ productsStore.quantityProducts }}</h2>
-                <span class="text-muted fw-semibold">Productos Disponibles</span>
+                <span class="text-muted fw-semibold">SKUs Activos en Catálogo</span>
               </div>
               <div class="border-start border-2 border-secondary-subtle"></div>
               <div>
                 <h2 class="text-success mb-0 fw-bold">{{ productsStore.totalStock }}</h2>
-                <span class="text-muted fw-semibold">Stock Total Disponible (Unidades)</span>
+                <span class="text-muted fw-semibold">Unidades Totales en Almacén</span>
               </div>
             </div>
           </div>

@@ -51,9 +51,9 @@
         <!-- Enlaces Centrados -->
         <div class="navbar-nav mx-auto align-items-center text-center mt-3 mt-lg-0">
           <RouterLink to="/" class="nav-link mx-3">Inicio</RouterLink>
-          <RouterLink to="/products" class="nav-link mx-3">Productos Disponibles</RouterLink>
+          <RouterLink to="/products" class="nav-link mx-3">Catálogo</RouterLink>
           <RouterLink v-if="isAdmin" to="/admin/products" class="nav-link mx-3"
-            >Crud Productos</RouterLink
+            >Crud de Productos</RouterLink
           >
         </div>
 

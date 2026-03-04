@@ -26,7 +26,7 @@
             "
           >
             <div class="text-white px-3">
-              <h1 class="mb-3 fw-bold display-4">Explora Nuestro Catálogo Premium</h1>
+              <h1 class="mb-3 fw-bold display-4">Explora Nuestro Exclusivo Catálogo</h1>
               <h4 class="mb-3">Las mejores marcas y ofertas en un solo lugar</h4>
               <RouterLink
                 class="btn btn-success btn-lg mt-2 fw-semibold"
@@ -34,22 +34,6 @@
                 role="button"
                 >Ver Catálogo</RouterLink
               >
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <v-divider class="my-5 border-opacity-25" color="success"></v-divider>
-
-      <!-- Resumen Estadístico (ListProducts Functionality) -->
-      <section class="mb-5">
-        <div class="row justify-content-center text-center">
-          <div class="col-md-4">
-            <div class="card shadow-sm border-0 py-4 rounded-4 bg-light">
-              <h2 class="display-4 text-success fw-bold mb-0">
-                {{ productsStore.quantityProducts }}
-              </h2>
-              <p class="text-muted fw-semibold mb-0">Productos Disponibles en Catálogo</p>
             </div>
           </div>
         </div>
