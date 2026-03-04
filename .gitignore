@@ -50,3 +50,20 @@ firebase-debug.*.log
 
 # Ocultar configuraciones sensibles
 src/firebaseConfig.js
+
+# Custom / Patch
+diff.patch
+
+# Testing
+testing/
+/testing
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.Trashes
+*.orig
+*.rej
+*~

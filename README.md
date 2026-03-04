@@ -40,7 +40,7 @@ Este proyecto cumple con los estándares exigidos para el módulo 7:
 - ✅ **Rutas dinámicas**: Vista individual por producto y protección de rutas CRUD.
 - ✅ **Al menos 3 vistas**: Inicio, Catálogo (Productos Disponibles) y Administración (CRUD).
 - ✅ **Diseño Profesional**: Implementación profunda de Bootstrap 5 con estilos extra (Glassmorphism, Dark/Light mode).
-- ✅ **Estado global**: Gestión efectiva del estado de productos, carrito de compras y usuarios utilizando **Pinia** (sustituyendo el clásico Vuex).
+- ✅ **Estado global**: Gestión efectiva del estado de productos, carrito de compras y usuarios utilizando **Pinia**.
 
 ---
 
@@ -109,14 +109,14 @@ Maneja toda la lista de productos disponibles, stock en tiempo real y listas de 
 
 #### Store `cart` (`cart.store.js`)
 
-Controla lo que el usuario quiere comprar.
+Administra los productos que el usuario ha seleccionado para su compra.
 
-- Verifica constantemente el `stockAvailable` para impedir agregar más de lo permitido.
-- Calcula totales monetarios al vuelo.
+- Verifica continuamente la propiedad `stockAvailable` para evitar agregar cantidades que superen el inventario.
+- Calcula los montos totales de forma dinámica.
 
 #### Store `user` (`user.store.js`)
 
-Controla la sesión. Determina qué partes de la UI se renderizan (ej. La vista CRUD solo es visible para cuentas `admin`).
+Gestiona la sesión del usuario. Determina qué elementos de la interfaz se renderizan (por ejemplo, la vista CRUD es exclusiva para cuentas con rol de administrador).
 
 ---
 
@@ -161,7 +161,7 @@ npm run dev
 ### Composition API y Pinia
 
 **Decisión**: Optar por la sintaxis Setup de Vue 3 junto a Pinia (descartando Options API y Vuex).
-**Justificación**: Permite un código mucho más modular, legible y fácil de debuggear. Pinia elimina las mutaciones estáticas de Vuex, permitiendo alterar y leer estados con reactividad nativa ultraveloz.
+**Justificación**: Permite un código mucho más modular, legible y fácil de depurar. Pinia elimina las mutaciones estáticas de Vuex, permitiendo alterar y leer estados con reactividad nativa de alto rendimiento.
 
 ### Glassmorphism y Paleta Neón
 
@@ -172,14 +172,14 @@ npm run dev
 
 ## 📱 Funcionalidades Destacadas
 
-| Funcionalidad               | Descripción                                                                                                                                                          |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 🛍️ **E-Commerce Real**      | Lógica de Carrito de Compras enlazada al stock global.                                                                                                               |
-| 🎨 **Modo Noche**           | Switch interactivo de variables globales y colores Neón.                                                                                                             |
-| 🧱 **Arquitectura SPA**     | Transiciones fluidas sin recarga de página (Vue Router).                                                                                                             |
-| 🛡️ **Control de Roles**     | Ocultamiento reactivo de Vistas Administrativas.                                                                                                                     |
-| 🚀 **Gestión CRUD**         | Tabla inteligente con inserción de productos en vivo, con notificaciones interactivas de Vuetify.                                                                    |
-| 🎯 **Buscador Inteligente** | Navbar `sticky` que no te expulsa del panel de control si buscas estando de admin, y que hace auto-scroll a las grillas al usarse desde otra parte de la aplicación. |
+| Funcionalidad               | Descripción                                                                                                                                                                                                                          |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 🛍️ **E-Commerce Real**      | Lógica de Carrito de Compras enlazada al stock global.                                                                                                                                                                               |
+| 🎨 **Modo Noche**           | Switch interactivo de variables globales y colores Neón.                                                                                                                                                                             |
+| 🧱 **Arquitectura SPA**     | Transiciones fluidas sin recarga de página (Vue Router).                                                                                                                                                                             |
+| 🛡️ **Control de Roles**     | Ocultamiento reactivo de Vistas Administrativas.                                                                                                                                                                                     |
+| 🚀 **Gestión CRUD**         | Tabla inteligente con inserción de productos en tiempo real, con notificaciones interactivas de Vuetify.                                                                                                                             |
+| 🎯 **Buscador Inteligente** | Barra de navegación `sticky` que mantiene al usuario en el panel de control durante las búsquedas como administrador, y realiza un desplazamiento automático a las cuadrículas al utilizarse desde otras secciones de la aplicación. |
 
 ---
 
