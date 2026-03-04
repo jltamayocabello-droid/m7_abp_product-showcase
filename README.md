@@ -4,6 +4,7 @@
 ![Stack](https://img.shields.io/badge/Stack-Vue.js_3_%7C_Vite_%7C_Pinia-brightgreen)
 ![Router](https://img.shields.io/badge/Vue_Router-4.x-blue)
 ![UI](https://img.shields.io/badge/UI-Bootstrap_5.3-7952b3)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=firebase&logoColor=black)
 
 ---
 
@@ -13,7 +14,7 @@
 
 El equipo de desarrollo del área de e-commerce necesitaba una aplicación SPA (Single Page Application) que sirviera como catálogo interactivo de productos. Se buscaba un sistema moderno, dinámico y responsive que permitiera a los usuarios visualizar información de productos, filtrar por categorías y ver detalles individuales. Además, se requería una interfaz robusta para gestionar el estado de forma centralizada.
 
-El equipo desarrolló una solución completa aplicando de forma progresiva los conceptos del módulo: componentes reutilizables, consumo de API simulada, rutas dinámicas, estado global con Pinia y un diseño moderno estilo Glassmorphism.
+El equipo desarrolló una solución completa aplicando de forma progresiva los conceptos del módulo: componentes reutilizables, integración con servicios en la nube (Firebase Firestore y Authentication), rutas dinámicas, estado global con Pinia y un diseño moderno estilo Glassmorphism.
 
 ---
 
@@ -41,6 +42,7 @@ Este proyecto cumple con los estándares exigidos para el módulo 7:
 - ✅ **Al menos 3 vistas**: Inicio, Catálogo (Productos Disponibles) y Administración (CRUD).
 - ✅ **Diseño Profesional**: Implementación profunda de Bootstrap 5 con estilos extra (Glassmorphism, Dark/Light mode).
 - ✅ **Estado global**: Gestión efectiva del estado de productos, carrito de compras y usuarios utilizando **Pinia**.
+- ✅ **Backend Integrado**: Implementación de **Firebase Firestore** como base de datos NoSQL en tiempo real y **Firebase Authentication** para la gestión de sesiones y protección de rutas.
 
 ---
 
@@ -52,6 +54,7 @@ Este proyecto cumple con los estándares exigidos para el módulo 7:
 - **Vite**: Bundler y entorno de desarrollo ultra rápido.
 - **Vue Router 4**: Gestión de navegación SPA.
 - **Pinia**: Manejo moderno del estado global (Products, Cart, User).
+- **Firebase**: Backend-as-a-Service (BaaS) utilizado para autenticación (Auth), base de datos en la nube (Firestore) y despliegue del proyecto (Hosting).
 - **Bootstrap 5.3 + Custom CSS**: Responsividad, componentes UI y estética _Glassmorphism_.
 - **Vuetify**: Componentes interactivos como alertas contextuales (Snackbars) y botones.
 - **Vue3-Carousel**: Implementación de sliders para productos destacados.
@@ -161,11 +164,13 @@ npm run dev
 ### Composition API y Pinia
 
 **Decisión**: Optar por la sintaxis Setup de Vue 3 junto a Pinia (descartando Options API y Vuex).
+
 **Justificación**: Permite un código mucho más modular, legible y fácil de depurar. Pinia elimina las mutaciones estáticas de Vuex, permitiendo alterar y leer estados con reactividad nativa de alto rendimiento.
 
 ### Glassmorphism y Paleta Neón
 
 **Decisión**: Personalizar Bootstrap de manera agresiva utilizando `backdrop-filter: blur`, gradientes semitransparentes y una paleta de colores oscuro-neón.
+
 **Justificación**: Demostrar la capacidad de fusionar librerías UI de manera personalizada para crear plataformas que se sientan _Premium_, dinámicas y de alto impacto visual.
 
 ---
