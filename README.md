@@ -155,7 +155,9 @@ npm run dev
 
 **Repositorio GitHub:** 🔗 **[https://github.com/jltamayocabello-droid/m7_abp_product-showcase](https://github.com/jltamayocabello-droid/m7_abp_product-showcase)**
 
-**Deploy del proyecto:** 🔗 **[https://m7-abp-vue-product-showcase.web.app/](https://m7-abp-vue-product-showcase.web.app/)**
+**Deploy Firebase:** 🔗 **[https://m7-abp-vue-product-showcase.web.app/](https://m7-abp-vue-product-showcase.web.app/)**
+
+**Deploy GitHub Pages:** 🔗 **[https://jltamayocabello-droid.github.io/m7_abp_product-showcase/](https://jltamayocabello-droid.github.io/m7_abp_product-showcase/)**
 
 ---
 
