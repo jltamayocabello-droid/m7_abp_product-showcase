@@ -158,7 +158,23 @@ npm run dev
 ### 4. Uso de la aplicación
 
 - **Público**: Acceso a la página de Inicio, visor de Productos Disponibles y Carrito de compras funcional según el stock.
-- **Administrador**: Al iniciar sesión como Admin (si configuraste roles en `user.store`), la navbar habilitará la ruta protegida _"Crud Productos"_, la cual permite alterar el inventario en tiempo real.
+- **Administrador**: Al iniciar sesión como Admin, la navbar habilitará la ruta protegida _"Crud Productos"_, la cual permite alterar el inventario en tiempo real.
+
+### 5. Autenticación y Roles (Credenciales)
+
+El sistema utiliza **Firebase Authentication** para el control de acceso y **Firestore** para almacenar el rol de cada usuario (colección `users`).
+
+**Para probar el sistema como Administrador:**
+
+1. Ve a la vista de **Login**.
+2. Ingresa con las credenciales de administrador (deben estar configuradas en tu Firebase):
+   - **Email:** `admin@admin.com` _(ejemplo)_
+   - **Password:** `123456` _(ejemplo)_
+     > 💡 _Nota técnica: Para que una cuenta tenga acceso al CRUD, su documento en la colección `users` de Firestore debe poseer obligatoriamente el campo `role: "admin"`._
+
+**Para probar el sistema como Público/Cliente:**
+
+1. Cualquier usuario puede navegar el catálogo y agregar al carrito. Opcionalmente, puedes registrar una cuenta nueva desde la vista de **Registro**.
 
 ---
 
