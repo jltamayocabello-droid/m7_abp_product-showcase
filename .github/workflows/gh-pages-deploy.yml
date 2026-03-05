@@ -31,9 +31,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        env:
-          DEPLOY_ENV: gh-pages
-        run: npm run build
+        run: npm run build -- --base=/m7_abp_product-showcase/
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact

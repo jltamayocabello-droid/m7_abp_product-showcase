@@ -6,9 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Si la variable DEPLOY_ENV existe y es 'gh-pages', usa esa base.
-  // Si no, por defecto usa la ruta raíz '/' (que es la correcta para Netlify y Local)
-  base: process.env.DEPLOY_ENV === 'gh-pages' ? '/m7_abp_product-showcase/' : '/',
+  base: '/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
