@@ -49,7 +49,7 @@ firebase-debug.log
 firebase-debug.*.log
 
 # Ocultar configuraciones sensibles
-src/firebaseConfig.js
+# Ya no se ignora src/firebaseConfig.js porque ahora usa variables de entorno seguras
 
 # Custom / Patch
 diff.patch
