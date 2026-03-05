@@ -5,10 +5,11 @@
 ![Router](https://img.shields.io/badge/Vue_Router-4.x-blue)
 ![UI](https://img.shields.io/badge/UI-Bootstrap_5.3-7952b3)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=firebase&logoColor=black)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4ad6e3b1-a545-43c9-a2a4-4916ac12b3ac/deploy-status)](https://app.netlify.com/projects/product-showcase-vue/deploys)
 
 ---
 
-## � Descripción del Proyecto
+## 📖 Descripción del Proyecto
 
 **Unidad solicitante:** Departamento de E-commerce de una empresa de tecnología.
 
@@ -204,8 +205,12 @@ Este proyecto es parte de un trabajo académico para SENCE y está disponible co
 
 ---
 
-## 🙏 Agradecimientos
-
 - **SENCE** por la formación en el área de desarrollo web moderno.
 - **Comunidad Vue.js** por proporcionar herramientas escalables increíbles.
 - **Templarian (WindowsIcons)** por diseñar y proporcionar bajo Dominio Público el icono SVG del logotipo.
+- **Bootstrap Icons** por el completo set de iconos utilizado en toda la aplicación.
+- **Unsplash** por la provisión de imágenes de alta calidad para el Hero Banner.
+- **SweetAlert2** por el sistema de alertas interactivas y estéticas.
+- **Google Fonts (Roboto)** por la tipografía del proyecto.
+- **Vue3-Carousel** por la implementación de sliders y carruseles fluidos.
+- **Vuetify** por los componentes UI avanzados y notificaciones.
