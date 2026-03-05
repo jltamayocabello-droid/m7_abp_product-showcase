@@ -139,7 +139,17 @@ cd m7_abp_product-showcase
 npm install
 ```
 
-### 3. Ejecutar en modo desarrollo
+### 3. Configurar variables de entorno
+
+Copia el archivo `.env.example` y renómbralo a `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Luego, rellena las variables de `VITE_FIREBASE_...` en el archivo `.env` con las credenciales de tu proyecto de Firebase.
+
+### 4. Ejecutar en modo desarrollo
 
 ```bash
 npm run dev
