@@ -26,7 +26,29 @@
               </button>
             </div>
           </form>
-          <p class="mt-3">
+
+          <!-- Credenciales de administrador para Portafolio -->
+          <div class="mt-4 p-3 bg-light border rounded">
+            <h6 class="mb-2 text-center text-muted">
+              <i class="bi bi-info-circle me-1"></i>Credenciales de Demostración
+            </h6>
+            <p class="small text-muted mb-2 text-center">
+              Usa este usuario para explorar el panel de administración:
+            </p>
+            <div class="d-flex flex-column mb-2 text-center">
+              <span class="small font-monospace"><strong>Correo:</strong> admin@admin.cl</span>
+              <span class="small font-monospace"><strong>Contraseña:</strong> 123456</span>
+            </div>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary w-100 mt-2"
+              @click="fillAdminCredentials"
+            >
+              <i class="bi bi-magic me-1"></i>Autocompletar credenciales
+            </button>
+          </div>
+
+          <p class="mt-3 text-center">
             ¿No tienes cuenta?
             <router-link to="/register">Regístrate</router-link>
           </p>
@@ -53,6 +75,12 @@ const email = ref('')
 const password = ref('')
 const error = ref('')
 const success = ref('')
+
+function fillAdminCredentials() {
+  email.value = 'admin@admin.cl'
+  password.value = '123456'
+  error.value = ''
+}
 
 async function onLogin() {
   error.value = ''
